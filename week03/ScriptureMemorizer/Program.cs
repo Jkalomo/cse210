@@ -97,16 +97,21 @@ class Scripture
 
 class Reference
 {
-    public string Text { get; }
+    private string _text;
 
     public Reference(string reference)
     {
-        Text = reference;
+        _text = reference;
+    }
+
+    public string GetText()
+    {
+        return _text;
     }
 
     public override string ToString()
     {
-        return Text;
+        return _text;
     }
 }
 
