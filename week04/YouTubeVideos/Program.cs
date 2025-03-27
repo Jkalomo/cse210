@@ -61,19 +61,19 @@ class Program
         List<Video> videos = new List<Video>();
 
         // Creating video objects
-        Video video1 = new Video("Understanding OOP", "John Doe", 600);
-        video1.AddComment("Alice", "Great explanation!");
-        video1.AddComment("Bob", "Very informative.");
-        video1.AddComment("Charlie", "Thanks for sharing.");
+        Video video1 = new Video("Understanding Numbers", "John Mark", 600);
+        video1.AddComment("Aleck", "Great explanation!");
+        video1.AddComment("Jonathan", "Very creative.");
+        video1.AddComment("Charlie", "Oustanding video.");
 
-        Video video2 = new Video("C# Basics Tutorial", "Jane Smith", 900);
-        video2.AddComment("Dave", "Helped me a lot, thanks!");
-        video2.AddComment("Emma", "Could you cover more on LINQ?");
+        Video video2 = new Video("Python Basics Tutorial", "Jack Smith", 900);
+        video2.AddComment("Daniel", "Taught me a lo, thanks!");
+        video2.AddComment("Emma", " Incredible Information?");
 
-        Video video3 = new Video("Design Patterns in C#", "Mike Johnson", 1200);
-        video3.AddComment("Frank", "This was super useful!");
-        video3.AddComment("Grace", "Loved the examples.");
-        video3.AddComment("Hank", "Could you make a video on SOLID principles?");
+        Video video3 = new Video("Learning C#", "Mike Thomas", 1200);
+        video3.AddComment("Frank", "This was helpfu!");
+        video3.AddComment("Grace", "Great examples.");
+        video3.AddComment("Terry", "Good programming principles?");
 
         // Adding videos to the list
         videos.Add(video1);
