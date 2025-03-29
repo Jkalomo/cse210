@@ -29,10 +29,21 @@ class Video
         Length = length;
     }
 
-    // Method to add a comment
+    // Method to format video length as mm:ss
+    private string GetFormattedLength()
+    {
+        int minutes = Length / 60;
+        int seconds = Length % 60;
+        return $"{minutes:D2}:{seconds:D2}";
+    }
+
+    // Method to add a comment with validation
     public void AddComment(string username, string text)
     {
-        comments.Add(new Comment(username, text));
+        if (!string.IsNullOrWhiteSpace(text))
+        {
+            comments.Add(new Comment(username, text.Trim()));
+        }
     }
 
     // Method to get the number of comments
@@ -44,7 +55,7 @@ class Video
     // Method to display video details and comments
     public void Display()
     {
-        Console.WriteLine($"\nTitle: {Title}\nAuthor: {Author}\nLength: {Length} seconds\nNumber of Comments: {GetCommentCount()}\n");
+        Console.WriteLine($"\nTitle: {Title}\nAuthor: {Author}\nLength: {GetFormattedLength()}\nNumber of Comments: {GetCommentCount()}\n");
         Console.WriteLine("Comments:");
         foreach (var comment in comments)
         {
@@ -64,16 +75,16 @@ class Program
         Video video1 = new Video("Understanding Numbers", "John Mark", 600);
         video1.AddComment("Aleck", "Great explanation!");
         video1.AddComment("Jonathan", "Very creative.");
-        video1.AddComment("Charlie", "Oustanding video.");
+        video1.AddComment("Charlie", "Outstanding video.");
 
         Video video2 = new Video("Python Basics Tutorial", "Jack Smith", 900);
-        video2.AddComment("Daniel", "Taught me a lo, thanks!");
-        video2.AddComment("Emma", " Incredible Information?");
+        video2.AddComment("Daniel", "Taught me a lot, thanks!");
+        video2.AddComment("Emma", "Incredible Information!");
 
         Video video3 = new Video("Learning C#", "Mike Thomas", 1200);
-        video3.AddComment("Frank", "This was helpfu!");
+        video3.AddComment("Frank", "This was helpful!");
         video3.AddComment("Grace", "Great examples.");
-        video3.AddComment("Terry", "Good programming principles?");
+        video3.AddComment("Terry", "Good programming principles.");
 
         // Adding videos to the list
         videos.Add(video1);
