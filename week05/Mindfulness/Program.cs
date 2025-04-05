@@ -1,6 +1,6 @@
 
 //A progress bar is displayed during each activity to show the user how much time has passed. 
-//After each activity, the program increments this count and displays it to the user at the end of the session (e.g., "You have completed X activities").
+//After each activity, the program increments this count and displays it to the user at the end of the session 
 // If the input is invalid, the program will ask again until the user provides a valid response.
 //the program shows a progress bar after each prompt/question or item listing to give the user a sense of progress throughout the activity.
 
