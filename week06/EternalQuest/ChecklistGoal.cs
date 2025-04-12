@@ -1,43 +1,40 @@
 public class ChecklistGoal : Goal
 {
-    private int _amountCompleted;
-    private int _target;
-    private int _bonus;
+    private int timesAchieved;
+    private int totalTimesRequired;
 
-    public ChecklistGoal(string shortName, string description, int points, int target, int bonus)
-        : base(shortName, description, points)
+    // Constructor for ChecklistGoal
+    public ChecklistGoal(string name, string description, int points, int totalTimesRequired)
+        : base(name, description, points)
     {
-        _amountCompleted = 0;
-        _target = target;
-        _bonus = bonus;
+        this.timesAchieved = 0;
+        this.totalTimesRequired = totalTimesRequired;
     }
 
-    public override void RecordEvent()
+    // Override AddProgress to increment achievement count
+    public override void AddProgress()
     {
-        if (_amountCompleted < _target)
+        if (timesAchieved < totalTimesRequired)
         {
-            _amountCompleted++;
-            Console.WriteLine($"Goal '{_shortName}' accomplished! Completed {_amountCompleted}/{_target}.");
+            timesAchieved++;
+            Console.WriteLine($"{Name} completed {timesAchieved}/{totalTimesRequired} times. You earned {Points} points.");
+            ProvideMotivation();
+
+            // If the goal is completed, add a bonus
+            if (timesAchieved == totalTimesRequired)
+            {
+                Console.WriteLine($"Congratulations! You've completed {Name}! You earned a bonus of 500 points.");
+            }
         }
-        if (_amountCompleted == _target)
+        else
         {
-            Console.WriteLine($"Goal '{_shortName}' is completed. You earned a bonus of {_bonus} points!");
+            Console.WriteLine($"{Name} is already fully achieved.");
         }
     }
 
+    // Override IsComplete to check if the goal is fully completed
     public override bool IsComplete()
     {
-        return _amountCompleted >= _target;
-    }
-
-    public override string GetStringRepresentation()
-    {
-        return $"{_shortName},{_description},{_points},{_amountCompleted}/{_target},{_bonus}";
-    }
-
-    // Override the GetDetailsString method to show the progress for checklist goals
-    public override string GetDetailsString()
-    {
-        return $"[ ] {_shortName}: {_description} (Completed {_amountCompleted}/{_target})";
+        return timesAchieved >= totalTimesRequired;
     }
 }

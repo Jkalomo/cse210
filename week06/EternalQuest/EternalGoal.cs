@@ -1,22 +1,21 @@
-using System;
-
 public class EternalGoal : Goal
 {
-    public EternalGoal(string shortName, string description, int points) 
-        : base(shortName, description, points) { }
+    // Constructor for EternalGoal
+    public EternalGoal(string name, string description, int points)
+        : base(name, description, points)
+    { }
 
-    public override void RecordEvent()
+    // Override AddProgress to add points every time
+    public override void AddProgress()
     {
-        Console.WriteLine($"Goal '{_shortName}' has been completed again!");
+        Console.WriteLine($"{Name} completed! You earned {Points} points.");
+        ProvideMotivation();
     }
 
+    // Override IsComplete (EternalGoals never complete)
     public override bool IsComplete()
     {
-        return false; // Eternal goals are never marked as complete
-    }
-
-    public override string GetStringRepresentation()
-    {
-        return $"{_shortName},{_description},{_points},false";
+        return false; // Eternal goals never complete
     }
 }
+

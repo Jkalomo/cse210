@@ -1,27 +1,36 @@
+//Levels and Achievements: Track the user’s level and unlock achievements based on their points.
+
+//Feedback and Motivation: Display motivational messages when goals are completed.
+
+
 using System;
 
-public class Program
+class Program
 {
-    public static void Main(string[] args)
+    static void Main(string[] args)
     {
-        // Initialize GoalManager
-        GoalManager goalManager = new GoalManager();
+        GoalTracker goalTracker = new GoalTracker();
 
-        // Start the program (for simplicity, we skip complex menu interaction for now)
-        goalManager.Start();
+        // Create some goals
+        Goal simpleGoal = new SimpleGoal("Read Scriptures", "Read the scriptures for today", 100);
+        Goal eternalGoal = new EternalGoal("Pray Daily", "Pray every day", 50);
+        Goal checklistGoal = new ChecklistGoal("Attend the Temple", "Attend the temple 5 times", 200, 5);
 
-        // Example of creating a goal and interacting with it
-        goalManager.CreateGoal("simple", "Learn C#", "Complete a C# tutorial", 10);
-        goalManager.CreateGoal("checklist", "Complete Exercises", "Complete 5 exercises", 5, 5, 10);
-        
-        // List goal names
-        goalManager.ListGoalNames();
-        
-        // Record an event for the first goal (SimpleGoal)
-        goalManager.RecordEvent(0); // Complete the first goal
-        
-        // Record an event for the checklist goal
-        goalManager.RecordEvent(1); // Complete an event in the checklist goal
+        // Add goals to the tracker
+        goalTracker.AddGoal(simpleGoal);
+        goalTracker.AddGoal(eternalGoal);
+        goalTracker.AddGoal(checklistGoal);
+
+        // Simulate completing goals
+        goalTracker.RecordProgress(0); // Completing SimpleGoal
+        goalTracker.RecordProgress(1); // Completing EternalGoal
+        goalTracker.RecordProgress(2); // Completing ChecklistGoal
+
+        // Display current goals and points
+        goalTracker.DisplayGoals();
+        goalTracker.DisplayScore();
     }
 }
+
+
 
