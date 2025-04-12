@@ -24,8 +24,9 @@ public class GoalTracker
     {
         foreach (Goal goal in goals)
         {
+            goal.DisplayGoalInfo();  // Display basic goal info from the base class
             string status = goal.IsComplete() ? "Completed" : "Not completed";
-            Console.WriteLine($"{goal.Name}: {status}");
+            Console.WriteLine($"Status: {status}");
         }
     }
 
@@ -49,4 +50,5 @@ public class GoalTracker
         Console.WriteLine($"Total points: {totalPoints}");
     }
 }
+
 

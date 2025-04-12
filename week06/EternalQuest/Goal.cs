@@ -1,12 +1,10 @@
-using System;
-
 public abstract class Goal
 {
     public string Name { get; set; }
     public string Description { get; set; }
     public int Points { get; set; }
 
-    // Constructor
+    // Constructor for initializing a Goal
     public Goal(string name, string description, int points)
     {
         Name = name;
@@ -14,27 +12,25 @@ public abstract class Goal
         Points = points;
     }
 
-    // Abstract method to add progress for each type of goal
+    // Abstract method to be implemented by subclasses
     public abstract void AddProgress();
 
-    // Abstract method to check if the goal is complete
+    // Virtual method to be overridden in derived classes if necessary
+    public virtual void DisplayGoalInfo()
+    {
+        Console.WriteLine($"{Name}: {Description} - Points: {Points}");
+    }
+
+    // Abstract method to check if a goal is complete
     public abstract bool IsComplete();
 
-    // Method to provide motivational feedback
-    protected void ProvideMotivation()
+    // Method to provide motivation (same for all goals)
+    public void ProvideMotivation()
     {
-        string[] motivationalMessages = new string[]
-        {
-            "Great job! Keep pushing!",
-            "You're on a roll! Keep it up!",
-            "Amazing work! You're getting closer to your goal!",
-            "Keep going! You're making progress every day!"
-        };
-
-        Random rand = new Random();
-        int randomIndex = rand.Next(motivationalMessages.Length);
-        Console.WriteLine(motivationalMessages[randomIndex]);
+        Console.WriteLine($"Great job! Keep up the good work.");
     }
 }
+
+
 
 
